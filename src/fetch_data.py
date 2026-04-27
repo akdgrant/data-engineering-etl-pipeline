@@ -2,8 +2,8 @@ import requests
 import pandas as pd
 import logging
 
-API_ID = "598b066b"
-API_KEY = "28a7a51ada32da68fa45fdcc549e4500"
+API_ID = "ADZUNA_API_ID"
+API_KEY = "ADZUNA_API_KEY"
 
 logging.basicConfig(
     filename="../logs/pipeline.log",

@@ -1,9 +1,13 @@
 import requests
 import pandas as pd
 import logging
+from dotenv import load_dotenv
+import os
 
-API_ID = "598b066b"
-API_KEY = "28a7a51ada32da68fa45fdcc549e4500"
+load_dotenv()
+
+API_ID = os.getenv("ADZUNA_API_ID")
+API_KEY = os.getenv("ADZUNA_API_KEY")
 
 logging.basicConfig(
     filename="../logs/pipeline.log",

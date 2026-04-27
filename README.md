@@ -1,65 +1,63 @@
-# End-to-End ETL Pipeline: Job Listings Data
+# 🚀 Data Engineering ETL Pipeline (Adzuna API → PostgreSQL)
 
-## Overview
-This project is an end-to-end ETL (Extract, Transform, Load) pipeline that collects job listing data from the Adzuna API, processes and transforms it using Python, and loads it into a PostgreSQL database for structured storage and analysis.
+## 📌 Overview
 
-The pipeline demonstrates core data engineering concepts including API ingestion, data transformation, relational database modeling, and SQL validation.
+This project is a complete **end-to-end ETL (Extract, Transform, Load) pipeline** that extracts real-time job data from the Adzuna API, transforms it using Python (Pandas), and loads it into a PostgreSQL database for structured querying and analysis.
 
----
-
-## Architecture
-Adzuna API → Python ETL (Extract & Transform) → PostgreSQL (Load) → SQL Validation
+It demonstrates practical data engineering skills including API ingestion, data cleaning, relational database design, environment-based configuration, logging, and reproducible pipeline execution.
 
 ---
 
-## Tech Stack
-- Python
-- PostgreSQL
-- pandas
-- psycopg2
-- REST API (Adzuna)
-- SQL
+## 🏗️ Architecture
+
+Adzuna API  
+→ Python (requests)  
+→ Data Transformation (Pandas)  
+→ Structured DataFrame  
+→ PostgreSQL (jobs table)  
+→ SQL Queries / Analytics  
 
 ---
 
-## Features
-- Extracts job posting data from a public API
-- Transforms nested JSON into structured tabular format
-- Loads cleaned data into PostgreSQL
-- Implements modular pipeline design (separation of extract and load steps)
-- Includes logging for pipeline tracking and debugging
-- Validates loaded data using SQL queries
+## ⚙️ Tech Stack
+
+- Python  
+- Pandas  
+- Requests (API calls)  
+- PostgreSQL  
+- psycopg2  
+- python-dotenv  
+- Logging module  
 
 ---
 
-## Project Structure
-data-engineering-project/
-│
-├── src/
-│   ├── fetch_data.py          # Extracts and transforms API data
-│   ├── load_to_postgres.py    # Loads data into PostgreSQL
-│
-├── sql/
-│   └── create_tables.sql      # Database schema
-│
-├── logs/
-│   └── pipeline.log           # Pipeline logs
-│
-├── requirements.txt
-└── README.md
+## 📊 Features
+
+- Extracts live job listings from Adzuna API  
+- Parses nested JSON into structured tabular format  
+- Cleans and transforms job data using Pandas  
+- Loads data into PostgreSQL database  
+- Implements environment variables for secure API handling  
+- Logging system for pipeline tracking and debugging  
+- Handles real-world API responses and edge cases  
 
 ---
 
-## How to Run the Project
+## 🔐 Security (Important)
 
-### 1. Install dependencies
-pip install -r requirements.txt
+This project uses environment variables to protect sensitive credentials.
+
+Create a `.env` file:
+
+ADZUNA_API_ID=your_api_id  
+ADZUNA_API_KEY=your_api_key  
+
+The `.env` file is excluded from version control using `.gitignore`.
 
 ---
 
-### 2. Create database table
+## 🗄️ Database Schema
 
-Run in PostgreSQL:
 CREATE TABLE jobs (
     title TEXT,
     company TEXT,
@@ -68,30 +66,53 @@ CREATE TABLE jobs (
 
 ---
 
-### 3. Run the pipeline
-cd src
-python3 load_to_postgres.py
+## ▶️ How to Run
+
+### 1. Install dependencies
+pip install -r requirements.txt
+
+### 2. Set up PostgreSQL
+CREATE DATABASE job_pipeline;
+
+### 3. Run ETL pipeline
+python3 src/fetch_data.py  
+python3 src/load_to_postgres.py  
 
 ---
 
-## Data Validation
+## 📈 Example Output
 
-Run in PostgreSQL:
-SELECT COUNT(*) FROM jobs;
-SELECT * FROM jobs LIMIT 10;
+- Job title  
+- Company name  
+- Job location  
 
----
-
-## What This Project Demonstrates
-- End-to-end ETL pipeline design
-- Working with REST APIs
-- Data transformation using Python
-- Relational database design and loading
-- SQL querying and validation
-- Modular and maintainable code structure
+Stored in PostgreSQL for querying and analysis.
 
 ---
 
-## Notes
-- API credentials are stored in code for learning purposes
-- In production, secrets should be stored in environment variables (.env)
+## 🧠 Key Engineering Concepts Demonstrated
+
+- ETL pipeline design  
+- API integration  
+- Data transformation with Pandas  
+- Relational database design (PostgreSQL)  
+- Secure credential management (.env)  
+- Logging and monitoring  
+- Error handling in data pipelines  
+- Git version control workflow  
+
+---
+
+## 🚀 Future Improvements
+
+- Add Apache Airflow for scheduling automation  
+- Dockerize the pipeline for deployment  
+- Add data validation layer (Great Expectations)  
+- Build dashboard using Power BI / Tableau  
+- Expand to multi-source ingestion pipelines  
+
+---
+
+## 👤 Author
+
+Built as a data engineering portfolio project demonstrating production-style ETL pipeline development using Python and PostgreSQL.
